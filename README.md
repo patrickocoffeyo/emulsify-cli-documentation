@@ -30,7 +30,7 @@ Emulsify Systems have a few primary purposes:
 Emulsify Systems should be published to npm with the following requirements:
 
 - MUST have an `emulsify.system.json` file with the appropriate configuration. (see the **configuration** section below).
-- SHOULD specify the string `"emulsifySystem"` within the `package.json` `"keyword"` array. It may be odd that this string is camel-cased, but this will ensure that packages tagged with `"emulsify"` or `"system"` can be filtered out easily.
+- SHOULD specify the string `"emulsifySystem"` within the `package.json` `"keyword"` array. The camel-casing of this string may seem odd, but this naming convention will ensure that packages tagged with `"emulsify"` or `"system"` can be filtered out easily.
 - MUST publish all required files as part of the package. This means that you cannot rely upon an external npm package, for example, without exporting it as part of the package. No dependency installation will occur when the system is downloaded for implementation.
 
 ### Configuration
