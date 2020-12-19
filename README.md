@@ -12,10 +12,10 @@ This respository contains markdown files that describe in detail the feature req
 - **MUST**: indicates that something is a non-negotiable requirement.
 - **REQUIRED**: synonym of **MUST**.
 - **MUST NOT**: inverse of **MUST**, indicating that the absence of something is a non-negotiable requirement.
-- **OPTIONAL**: synonym of **MUST NOT**.
 - **SHOULD**: indicates that something is recommended, but not required.
 - **SHOULD NOT**: inverse of **SHOULD**, indicating that something is not recommended, but tolerable.
 - **CAN**: indicates that something is neither required, nor recommended.
+- **OPTIONAL**: synonym of **CAN**.
 - **IN QUESTION**: indicates that something is in question, and needs to be re-visited.
 
 ## Systems
