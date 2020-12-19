@@ -1,6 +1,6 @@
 # Emulsify CLI
 
-This respository contains markdown files that describe in detail the feature requirements and general purpose for the EMulsify CLI in it's 1.0 state. It also contains documentation around the organization patterns that the CLI will establish and work with.
+This repository contains markdown files that describe in detail the feature requirements and general purpose for the Emulsify CLI in it's 1.0 state. It also contains documentation around the organization patterns that the CLI will establish and work with.
 
 ## Term definitions
 
