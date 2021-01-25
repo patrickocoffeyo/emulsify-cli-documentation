@@ -81,11 +81,11 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
       "components": [
         {
           "name": "card",
-          "category": "molecules",
+          "category": "molecules"
         },
         {
           "name": "popup",
-          "category": "molecules",
+          "category": "molecules"
         }
       ],
       "requiredComponents": ["card"],
@@ -100,6 +100,7 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
           "path": "./js",
           "description": "Contains JavaScript that can be loaded in order to facilitate interactive behaviors within components."
         }
+      ]
     },
     {
       "platform": "gatsby",
@@ -183,12 +184,12 @@ Variants can be fully defined within the `system.emulsify.json` file in the `var
     {
       "name": "card",
       "category": "molecules",
-      "description": "A card that can be used to create small sections",
+      "description": "A card that can be used to create small sections"
     },
     {
       "name": "link",
       "category": "atoms",
-      "description": "Component that, when clicked, takes the user to a specified destination",
+      "description": "Component that, when clicked, takes the user to a specified destination"
     }
   ],
   "requiredComponents": ["link"],
@@ -203,6 +204,7 @@ Variants can be fully defined within the `system.emulsify.json` file in the `var
       "path": "./js",
       "description": "Contains JavaScript that can be loaded in order to facilitate interactive behaviors within components."
     }
+  ]
 }
 ```
 
@@ -236,13 +238,9 @@ Components can also be listed so a user can browse through them. Once a componen
 ```bash
 # In an Emulsify project with the cornflake system and the drupal9 variant:
 emulsify component list
-  > card
-  > link  <-
-    > install
-    > open
-
-```
+  > cardBut please do a
 
 ## TODO
 
 - Emulsify project initialization?
+```
