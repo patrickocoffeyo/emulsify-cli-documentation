@@ -212,9 +212,9 @@ Variants can be fully defined within the `system.emulsify.json` file in the `var
 
 When installing an Emulsify system, a variant MUST be selected. It will then be loaded up, scaffolded, and all the required components and assets will be added to the project in which the system is being installed.
 
-Variants may supply components that are not required, and those can be installed within a project easily. If the `variant.emulsify.json` file a
-For example, you could create an Emulsify System for [Material](https://material.io), and create a variant for Drupal. Then, Drupal developers would h
+Variants may supply components that are not required, and those can be installed within a project easily.
 
+```bash
 # In an Emulsify project with the cornflake system and the drupal9 variant:
 
 emulsify component install card
@@ -222,7 +222,7 @@ Downloading the "card" component...
 Moving the component into the "molecules" category...
 Finished!
 
-````
+```
 
 If a specified component does not exist within the variant, the user will be given an error message, as well as a list of the available components:
 
@@ -231,7 +231,7 @@ If a specified component does not exist within the variant, the user will be giv
 For example, you could create an Emulsify System for [Material](https://material.io), and create a variant for Drupal. Then, Drupal developers would ponent:
     > card
     > link  <-
-````
+```
 
 Components can also be listed so a user can browse through them. Once a component is selected, a sub-menu will open allowing the user to install the component, or open it within their default browser.
 
