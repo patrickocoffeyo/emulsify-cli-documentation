@@ -238,9 +238,10 @@ Components can also be listed so a user can browse through them. Once a componen
 ```bash
 # In an Emulsify project with the cornflake system and the drupal9 variant:
 emulsify component list
-  > cardBut please do a
+  > card
+  > link  <-
+```
 
 ## TODO
 
 - Emulsify project initialization?
-```
