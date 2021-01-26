@@ -224,19 +224,42 @@ Finished!
 
 ```
 
+A custom destination can be provided. This is useful if a developer wants to install the same component multiple times, and modify the component in different cases, for example.
+
+```bash
+# In an Emulsify project with the cornflake system and the drupal9 variant:
+
+emulsify component install card -d ./components/custom/card-2
+Downloading the "card" component...
+Moving the component into "./components/custom/card-2"...
+Finished!
+```
+
 If a specified component does not exist within the variant, the user will be given an error message, as well as a list of the available components:
 
 ```bash
-# In an Emulsify project with the cornflake syste
-For example, you could create an Emulsify System for [Material](https://material.io), and create a variant for Drupal. Then, Drupal developers would ponent:
+# In an Emulsify project with the cornflake system
+
+emulsify component install foobar
+  The "foobar" component does not exist within the drupal9 variant of cornflake. Would you like to select a different component?
     > card
     > link  <-
+```
+
+If a component is already installed, the user will be given a message, and will be asked to specify a destination.
+
+```bash
+# In an Emulsify project with the cornflake system
+
+emulsify component install card
+  A molecule named "card" is already present. Please run 'emulsify component install card -d "./custom/path"'
 ```
 
 Components can also be listed so a user can browse through them. Once a component is selected, a sub-menu will open allowing the user to install the component, or open it within their default browser.
 
 ```bash
 # In an Emulsify project with the cornflake system and the drupal9 variant:
+
 emulsify component list
   > card
   > link  <-
