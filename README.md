@@ -133,24 +133,7 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
 
 ### Installation
 
-Emulsify Systems can be implemented by installing a variant of the system that is compatible with the platform. The Emulsify CLI will attempt to determine the type of platform you are using and recommend a variant, but you can also manually select a variant.
-
-```bash
-# Running within a Drupal 9 project...
-
-emulsify system install cornflake
-  It looks like you are working on a "next" project. Would you like to install the "next" variant of the cornflake system? Y/n
-
-  # if "no" is selected, or if the platform is undeterminable...
-  The following variants are available:
-    > drupal8
-    > drupal9   <-
-    > drupal10
-    > gatsby
-    > next
-    > nuxt
-    > wordpress
-```
+An Emulsify System and variant must be chosen when an Emulsify project is being initialized, please refer to the "Project Initialization" section of this document for information and examples.
 
 ## Emulsify System Variant
 
@@ -161,7 +144,7 @@ Variants can be fully defined within the `system.emulsify.json` file in the `var
 ### Configuration
 
 - **system** (OPTIONAL): Can contain the name of the system to which the variant belongs. This allows for variant's systems to be easily identified if the variant is defined in a separate repository.
-- **platform** (REQUIRED): String describing the platform for which the variant is intended, such as drupal9, wordpress, etc. (IN QUESTION: We might want to define an enum of possible values.)
+- **platform** (REQUIRED): String describing the platform for which the variant is intended, such as drupal9, wordpress, etc. (IN QUESTION: We MUST constrain this to an enum of values. See the Project documentation for more details).
 - **repository** (REQUIRED if the variant has it's own repository): String containing a link to the git repository containing this system. This is used by the Emulsify CLI to find components and metadata about the system.
 - **structureImplementation** (REQUIRED if no `repository` field is present): Array containing objects that describe the location of each structure defined within the variant's system. Variants MUST provide a location for each structure outlined in the variant's parent system. Each object within this array MUST specify a structure `name`, and a `directory`, which will tell Emulsify where the files and components associated with the structure should live.
 - **components** (REQUIRED): Array containing an object for each component available within the variant. Each object MUST specify a `category` corresponding with one of the variant's categories, SHOULD provide a `description`, and MUST have a `name`. The name of the component MUST be the same as the name of the folder containing the component. In the example `variant.emulsify.json` below, the component with the category `molecules` and the name `card` MUST have its files in `./components/02-molecules/card/`.
@@ -281,6 +264,63 @@ emulsify component list
   > link  <-
 ```
 
-## TODO
+## Emulsify Project and Initialization
 
-- Emulsify project initialization?
+Emulsify projects are implementations of a variant of an Emulsify system within a platform such as Drupal, WordPress, or Next. Each platform may vary wildly. For example, Drupal and WordPress have a theming system, but Next just uses a simple folder structure. Emulsify will have a version of it's storybook tools and `package.json` for each of the platforms Emulsify supports.
+
+Other than the structures outlined in the chosen system/variant, Emulsify projects have 5 major parts:
+
+- `.emulsify/system.emulsify.json` file outlining the project's system.
+- `.emulsify/variant.emulsify.json` file outlining the selected variant.
+- `.emulsify/emulsify.json` file containing project configuration.
+- `.emulsify/storybook` folder containing the files needed to spin up storybook and render all of the components in the project. This is not abstracted, as implementations may choose to do custom work. The platform defined by the chosen variant will determine how this is set up, which is why we MUST constrain supported platforms. (IN QUESTION: this is probably not critical for the CLI MVP, but it may be a good idea to develop a system around defining platforms in the future so that people are free to implement their systems in any platform. For MVP, I think we can support Drupal and WordPress).
+- `package.json` file containing dependencies and scripts.
+
+### package.json
+
+The `package.json` file will store all the dependencies for the project, as well as providing some scripts:
+
+- `npm run build-storybook`: builds the storybook instance.
+- `npm run deploy-storybook`: builds the storybook instance for gh-pages into the `.out` directory.
+- `npm run storybook`: runs the storybook dev server.
+
+... more to come. I (Patrick) may need some help getting this fleshed out.
+
+### Initializing
+
+```bash
+# Running within a Drupal 9 project...
+
+emulsify init
+  It looks like you are working on a Drupal 9 project, what would you like to name your theme?
+    > yale-edu
+
+  What system would you like to use? You can choose one of the following, or enter the git url to a custom system:
+    > custom git url  <-
+    > cornflake
+    > material-ui
+    > carbon-design
+    > bootstrap
+    > flatstrap
+
+  Please enter the git url pointing to the custom system you want to use:
+    > git@github.com:fruit-loop-ds/fruit-loop.git
+
+  Initializing the fruit-loop system...
+  Please choose a system variant. The following variants are available in fruit-loop:
+    > drupal8
+    > drupal9   <-
+    > drupal10
+    > gatsby
+    > next
+    > nuxt
+    > wordpress
+
+  Initializing the drupal9 variant of fruit-loop...
+  Complete!
+
+  If you need any further documentation or help, check out the following links:
+   - fruit-loop documentation: https://fruit-loop-ds.info
+   - variant source: https://github.com/fruit-loop-ds/fruit-loop/variants/drupal9
+   - emulsify documentation: https://emulsify.info/wiki
+```
