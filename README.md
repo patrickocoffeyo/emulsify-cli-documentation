@@ -59,7 +59,6 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
       "name": "molecules",
       "description": "Medium-sized components used as building blocks within a larger component"
     },
-    },
     {
       "name": "organisms",
       "description": "Large components that compose smaller components into a cohesive UI"
@@ -67,7 +66,7 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
     {
       "name": "pages",
       "description": "Entire pages composed of smaller components"
-    },
+    }
   ],
   "variants": [
     {
@@ -96,7 +95,7 @@ Emulsify Systems are design systems that are available within the Emulsify ecosy
         {
           "name": "pages",
           "directory": "./components/04-pages"
-        },
+        }
       ],
       "components": [
         {
